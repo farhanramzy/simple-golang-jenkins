@@ -5,16 +5,16 @@ node {
 
  
         stage 'Checkout'
-        git url: 'https://github.com/farhanramzy/simple-golang-jenkins.git'
+        git branch: "main", url: 'https://github.com/farhanramzy/simple-golang-jenkins.git'
 
         stage 'preTest'
-        sh 'go version'
+        sh '${root} version'
 
         stage 'Test'
-        sh 'go test cover'
+        sh '${root} test ./... -cover'
 
-        stage 'build'
-        sh 'go build .'
+        stage 'Build'
+        sh '${root} build ./...*'
 
         stage 'Deploy'
 
