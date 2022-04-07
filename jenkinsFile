@@ -5,6 +5,20 @@ node {
 
     // Export environment variables pointing to the directory where Go was installed
     withEnv(["GOROOT=${root}", "PATH+GO=${root}/bin"]) {
+        
+        stage 'Checkout'
+        git url: 'https://github.com/farhanramzy/simple-golang-jenkins.git'
+
+        stage 'preTest'
         sh 'go version'
+
+        stage 'Test'
+        sh 'go test cover'
+
+        stage 'build'
+        sh 'go build .'
+
+        stage 'Deploy'
+
     }
 }
