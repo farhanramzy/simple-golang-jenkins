@@ -8,7 +8,7 @@ node {
         git branch: "main", url: 'https://github.com/farhanramzy/simple-golang-jenkins.git'
 
         stage 'preTest'
-        sh '${root} version'
+        sh 'go version'
 
         stage 'Test'
         sh '${root} test ./... -cover'
