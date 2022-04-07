@@ -1,5 +1,5 @@
 pipeline{
-    agent: any
+    agent any
     environment {
         root = "/usr/local/go/bin/go"
         branch = "main"
@@ -18,12 +18,12 @@ pipeline{
         }
         stage("Go Test") {
             steps {
-                sh "${root} test"
+                sh "${root} test ./... -cover"
             }
         }
         stage("Go Build") {
             steps {
-                sh "${root} build"
+                sh "${root} build ./...*"
             }
         }
     }
